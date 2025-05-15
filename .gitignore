@@ -30,6 +30,9 @@ target
 .gradle
 !gradle/wrapper/*.jar
 
+# IDE - Eclipse
+.metadata
+
 # IDE - VSCode
 .vscode/
 .vscode/*
