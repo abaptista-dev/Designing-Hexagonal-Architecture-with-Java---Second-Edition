@@ -1,10 +1,10 @@
 package dev.davivieira.application.usecases;
 
-import dev.davivieira.domain.entity.Router;
-import dev.davivieira.domain.vo.Network;
-import dev.davivieira.domain.vo.RouterId;
+import dev.davivieira.domain.entity.Estabelecimento;
+import dev.davivieira.domain.vo.Matricula;
+import dev.davivieira.domain.vo.EstabelecimentoId;
 
-public interface RouterNetworkUseCase {
+public interface EstabelecimentoMatriculaUseCase {
 
-    Router addNetworkToRouter(RouterId routerId, Network network);
+    Estabelecimento addMatriculaNoEstabelecimento(EstabelecimentoId estabelecimentoId, Matricula matricula);
 }

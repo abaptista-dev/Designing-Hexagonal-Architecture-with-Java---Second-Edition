@@ -1,37 +1,37 @@
 package dev.davivieira.application.ports.input;
 
-import dev.davivieira.application.ports.output.RouterNetworkOutputPort;
-import dev.davivieira.application.usecases.RouterNetworkUseCase;
-import dev.davivieira.domain.entity.Router;
-import dev.davivieira.domain.service.NetworkOperation;
-import dev.davivieira.domain.vo.Network;
-import dev.davivieira.domain.vo.RouterId;
+import dev.davivieira.application.ports.output.EstabelecimentoMatriculaOutputPort;
+import dev.davivieira.application.usecases.EstabelecimentoMatriculaUseCase;
+import dev.davivieira.domain.entity.Estabelecimento;
+import dev.davivieira.domain.service.MatriculaOperation;
+import dev.davivieira.domain.vo.Matricula;
+import dev.davivieira.domain.vo.EstabelecimentoId;
 
-public class RouterNetworkInputPort implements RouterNetworkUseCase {
+public class EstabelecimentoMatriculaInputPort implements EstabelecimentoMatriculaUseCase {
 
-    private final RouterNetworkOutputPort routerNetworkOutputPort;
+    private final EstabelecimentoMatriculaOutputPort estabelecimentoMatriculaOutputPort;
 
-    public RouterNetworkInputPort(RouterNetworkOutputPort routerNetworkOutputPort){
-        this.routerNetworkOutputPort = routerNetworkOutputPort;
+    public EstabelecimentoMatriculaInputPort(EstabelecimentoMatriculaOutputPort estabelecimentoMatriculaOutputPort){
+        this.estabelecimentoMatriculaOutputPort = estabelecimentoMatriculaOutputPort;
     }
 
     @Override
-    public Router addNetworkToRouter(RouterId routerId, Network network) {
-        var router = fetchRouter(routerId);
-        return createNetwork(router, network);
+    public Estabelecimento addMatriculaNoEstabelecimento(EstabelecimentoId estabelecimentoId, Matricula matricula) {
+        var router = fetchEstabelecimento(estabelecimentoId);
+        return createMatricula(router, matricula);
     }
 
-    private Router fetchRouter(RouterId routerId) {
-        return routerNetworkOutputPort.fetchRouterById(routerId);
+    private Estabelecimento fetchEstabelecimento(EstabelecimentoId estabelecimentoId) {
+        return estabelecimentoMatriculaOutputPort.fetchEstabelecimentoById(estabelecimentoId);
     }
 
-    private Router createNetwork(Router router, Network network) {
-        var newRouter = NetworkOperation.createNewNetwork(router, network);
-        return persistNetwork(router) ? newRouter :
-                router;
+    private Estabelecimento createMatricula(Estabelecimento estabelecimento, Matricula matricula) {
+        var newRouter = MatriculaOperation.criarMatricula(estabelecimento, matricula);
+        return persistMatricula(estabelecimento) ? newRouter :
+                estabelecimento;
     }
 
-    private boolean persistNetwork(Router router) {
-        return routerNetworkOutputPort.persistRouter(router);
+    private boolean persistMatricula(Estabelecimento estabelecimento) {
+        return estabelecimentoMatriculaOutputPort.persistEstabelecimento(estabelecimento);
     }
 }

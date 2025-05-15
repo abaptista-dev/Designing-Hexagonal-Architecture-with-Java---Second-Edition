@@ -12,14 +12,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class RouterJson {
+public class EstabelecimentoJson {
 
     @JsonProperty("routerId")
     private UUID routerId;
 
     @JsonProperty("routerType")
-    private RouterTypeJson routerType;
+    private DependenciaAdministrativaJson routerType;
 
     @JsonProperty("switch")
-    private SwitchJson networkSwitch;
+    private TurmaJson networkSwitch;
 }

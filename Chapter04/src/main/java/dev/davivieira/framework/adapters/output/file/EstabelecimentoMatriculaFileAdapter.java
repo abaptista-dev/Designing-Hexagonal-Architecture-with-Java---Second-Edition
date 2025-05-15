@@ -2,11 +2,11 @@ package dev.davivieira.framework.adapters.output.file;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.davivieira.application.ports.output.RouterNetworkOutputPort;
-import dev.davivieira.domain.entity.Router;
-import dev.davivieira.domain.vo.RouterId;
-import dev.davivieira.framework.adapters.output.file.json.RouterJson;
-import dev.davivieira.framework.adapters.output.file.mappers.RouterJsonFileMapper;
+import dev.davivieira.application.ports.output.EstabelecimentoMatriculaOutputPort;
+import dev.davivieira.domain.entity.Estabelecimento;
+import dev.davivieira.domain.vo.EstabelecimentoId;
+import dev.davivieira.framework.adapters.output.file.json.EstabelecimentoJson;
+import dev.davivieira.framework.adapters.output.file.mappers.EstabelecimentoJsonFileMapper;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,19 +14,19 @@ import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class RouterNetworkFileAdapter implements RouterNetworkOutputPort {
+public class EstabelecimentoMatriculaFileAdapter implements EstabelecimentoMatriculaOutputPort {
 
-    private static RouterNetworkFileAdapter instance;
-    private List<RouterJson> routers;
+    private static EstabelecimentoMatriculaFileAdapter instance;
+    private List<EstabelecimentoJson> routers;
     private InputStream resource;
     private ObjectMapper objectMapper;
 
     @Override
-    public Router fetchRouterById(RouterId routerId) {
-        var router = new Router();
-        for(RouterJson routerJson: routers){
-            if(routerJson.getRouterId().equals(routerId.getUUID())){
-                router = RouterJsonFileMapper.toDomain(routerJson);
+    public Estabelecimento fetchEstabelecimentoById(EstabelecimentoId estabelecimentoId) {
+        var router = new Estabelecimento();
+        for(EstabelecimentoJson routerJson: routers){
+            if(routerJson.getRouterId().equals(estabelecimentoId.getUUID())){
+                router = EstabelecimentoJsonFileMapper.toDomain(routerJson);
                 break;
             }
         }
@@ -34,8 +34,8 @@ public class RouterNetworkFileAdapter implements RouterNetworkOutputPort {
     }
 
     @Override
-    public boolean persistRouter(Router router) {
-        var routerJson = RouterJsonFileMapper.toJson(router);
+    public boolean persistEstabelecimento(Estabelecimento estabelecimento) {
+        var routerJson = EstabelecimentoJsonFileMapper.toJson(estabelecimento);
         try {
             String localDir = Paths.get("").toAbsolutePath().toString();
             File file = new File(localDir + "/inventory.json");
@@ -52,13 +52,13 @@ public class RouterNetworkFileAdapter implements RouterNetworkOutputPort {
             this.routers = objectMapper.
                     readValue(
                             resource,
-                            new TypeReference<List<RouterJson>>(){});
+                            new TypeReference<List<EstabelecimentoJson>>(){});
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private RouterNetworkFileAdapter() {
+    private EstabelecimentoMatriculaFileAdapter() {
         this.objectMapper = new ObjectMapper();
         this.resource = getClass().
                 getClassLoader().
@@ -66,9 +66,9 @@ public class RouterNetworkFileAdapter implements RouterNetworkOutputPort {
         readJsonFile();
     }
 
-    public static RouterNetworkFileAdapter getInstance() {
+    public static EstabelecimentoMatriculaFileAdapter getInstance() {
         if (instance == null) {
-            instance = new RouterNetworkFileAdapter();
+            instance = new EstabelecimentoMatriculaFileAdapter();
         }
         return instance;
     }

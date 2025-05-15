@@ -2,16 +2,16 @@ package dev.davivieira.domain.vo;
 
 import java.util.UUID;
 
-public class SwitchId {
+public class TurmaId {
 
     private final UUID id;
 
-    private SwitchId(UUID id){
+    private TurmaId(UUID id){
         this.id = id;
     }
 
-    public static SwitchId withId(String id){
-        return new SwitchId(UUID.fromString(id));
+    public static TurmaId withId(String id){
+        return new TurmaId(UUID.fromString(id));
     }
 
     public UUID getUUID() {

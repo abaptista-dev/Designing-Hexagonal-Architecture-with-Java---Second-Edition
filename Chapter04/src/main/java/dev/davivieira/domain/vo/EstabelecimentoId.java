@@ -2,16 +2,16 @@ package dev.davivieira.domain.vo;
 
 import java.util.UUID;
 
-public class RouterId {
+public class EstabelecimentoId {
 
     private final UUID id;
 
-    private RouterId(UUID id){
+    private EstabelecimentoId(UUID id){
         this.id = id;
     }
 
-    public static RouterId withId(String id){
-        return new RouterId(UUID.fromString(id));
+    public static EstabelecimentoId withId(String id){
+        return new EstabelecimentoId(UUID.fromString(id));
     }
 
     public UUID getUUID() {

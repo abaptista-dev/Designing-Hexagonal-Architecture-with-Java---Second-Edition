@@ -1,11 +1,25 @@
 package dev.davivieira.framework.adapters.output.h2.data;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.eclipse.persistence.annotations.Convert;
 import org.eclipse.persistence.annotations.Converter;
+
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.SecondaryTable;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,9 +33,10 @@ import java.util.UUID;
 @SecondaryTable(name = "networks")
 @MappedSuperclass
 @Converter(name="uuidConverter", converterClass= UUIDTypeConverter.class)
-public class SwitchData implements Serializable {
+public class TurmaData implements Serializable {
+    private static final long serialVersionUID = 8950512207053504221L;
 
-    @Id
+	@Id
     @Column(name="switch_id",
             columnDefinition = "uuid",
             updatable = false )
@@ -35,13 +50,13 @@ public class SwitchData implements Serializable {
     @Enumerated(EnumType.STRING)
     @Embedded
     @Column(name = "switch_type")
-    private SwitchTypeData switchType;
+    private TurnoData switchType;
 
     @OneToMany
     @JoinColumn(table = "networks",
             name = "switch_id",
             referencedColumnName = "switch_id")
-    private List<NetworkData> networks;
+    private List<MatriculaData> networks;
 
     @Embedded
     @AttributeOverrides({

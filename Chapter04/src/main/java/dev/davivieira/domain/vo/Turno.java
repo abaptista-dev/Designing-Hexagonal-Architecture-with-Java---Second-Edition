@@ -1,6 +1,10 @@
 package dev.davivieira.domain.vo;
 
-public enum SwitchType {
-    LAYER2,
-    LAYER3
+public enum Turno {
+    MANHA,
+    INTERMEDIARIO_MANHA,
+    TARDE,
+    INTERMEDIARIO_TARDE,
+    NOITE,
+    INTEGRAL
 }

@@ -1,35 +1,35 @@
 package dev.davivieira.framework.adapters.output.h2;
 
-import dev.davivieira.application.ports.output.RouterNetworkOutputPort;
-import dev.davivieira.domain.entity.Router;
-import dev.davivieira.domain.vo.RouterId;
-import dev.davivieira.framework.adapters.output.h2.data.RouterData;
+import dev.davivieira.application.ports.output.EstabelecimentoMatriculaOutputPort;
+import dev.davivieira.domain.entity.Estabelecimento;
+import dev.davivieira.domain.vo.EstabelecimentoId;
+import dev.davivieira.framework.adapters.output.h2.data.EstabelecimentoData;
 import dev.davivieira.framework.adapters.output.h2.mappers.RouterH2Mapper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceContext;
 
-public class RouterNetworkH2Adapter implements RouterNetworkOutputPort {
+public class EstabelecimentoMatriculaH2Adapter implements EstabelecimentoMatriculaOutputPort {
 
-    private static RouterNetworkH2Adapter instance;
+    private static EstabelecimentoMatriculaH2Adapter instance;
 
     @PersistenceContext
     private EntityManager em;
 
-    private RouterNetworkH2Adapter(){
+    private EstabelecimentoMatriculaH2Adapter(){
         setUpH2Database();
     }
 
     @Override
-    public Router fetchRouterById(RouterId routerId) {
-        var routerData = em.getReference(RouterData.class, routerId.getUUID());
+    public Estabelecimento fetchEstabelecimentoById(EstabelecimentoId estabelecimentoId) {
+        var routerData = em.getReference(EstabelecimentoData.class, estabelecimentoId.getUUID());
         return RouterH2Mapper.toDomain(routerData);
     }
 
     @Override
-    public boolean persistRouter(Router router) {
-        var routerData = RouterH2Mapper.toH2(router);
+    public boolean persistEstabelecimento(Estabelecimento estabelecimento) {
+        var routerData = RouterH2Mapper.toH2(estabelecimento);
         em.persist(routerData);
         return true;
     }
@@ -40,9 +40,9 @@ public class RouterNetworkH2Adapter implements RouterNetworkOutputPort {
         this.em = em;
     }
 
-    public static RouterNetworkH2Adapter getInstance() {
+    public static EstabelecimentoMatriculaH2Adapter getInstance() {
         if (instance == null) {
-            instance = new RouterNetworkH2Adapter();
+            instance = new EstabelecimentoMatriculaH2Adapter();
         }
         return instance;
     }

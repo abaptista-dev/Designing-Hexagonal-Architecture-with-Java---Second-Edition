@@ -2,23 +2,26 @@ package dev.davivieira.framework.adapters.input.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpServer;
-import dev.davivieira.application.usecases.RouterNetworkUseCase;
-import dev.davivieira.domain.entity.Router;
-import dev.davivieira.framework.adapters.input.RouterNetworkAdapter;
-import dev.davivieira.framework.adapters.output.file.mappers.RouterJsonFileMapper;
+import dev.davivieira.application.usecases.EstabelecimentoMatriculaUseCase;
+import dev.davivieira.domain.entity.Estabelecimento;
+import dev.davivieira.framework.adapters.input.EstabelecimentoMatriculaAdapter;
+import dev.davivieira.framework.adapters.output.file.mappers.EstabelecimentoJsonFileMapper;
 
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import static java.util.stream.Collectors.*;
 import java.net.URLDecoder;
 
-public class RouterNetworkRestAdapter extends RouterNetworkAdapter {
+public class EstabelecimentoMatriculaRestAdapter extends EstabelecimentoMatriculaAdapter {
 
-    public RouterNetworkRestAdapter(RouterNetworkUseCase routerNetworkUseCase){
-        this.routerNetworkUseCase = routerNetworkUseCase;
+    public EstabelecimentoMatriculaRestAdapter(EstabelecimentoMatriculaUseCase estabelecimentoMatriculaUseCase){
+        this.estabelecimentoMatriculaUseCase = estabelecimentoMatriculaUseCase;
     }
 
     /**
@@ -26,7 +29,7 @@ public class RouterNetworkRestAdapter extends RouterNetworkAdapter {
      * that is always cast to an HttpServer type.
      */
     @Override
-    public Router processRequest(Object requestParams){
+    public Estabelecimento processRequest(Object requestParams){
         Map<String, String> params = new HashMap<>();
         if(requestParams instanceof HttpServer) {
             var httpserver = (HttpServer) requestParams;
@@ -34,9 +37,9 @@ public class RouterNetworkRestAdapter extends RouterNetworkAdapter {
                 if ("GET".equals(exchange.getRequestMethod())) {
                     var query = exchange.getRequestURI().getRawQuery();
                     httpParams(query, params);
-                    router = this.addNetworkToRouter(params);
+                    estabelecimento = this.addNetworkToRouter(params);
                     ObjectMapper mapper = new ObjectMapper();
-                    var routerJson = mapper.writeValueAsString(RouterJsonFileMapper.toJson(router));
+                    var routerJson = mapper.writeValueAsString(EstabelecimentoJsonFileMapper.toJson(estabelecimento));
                     exchange.getResponseHeaders().set("Content-Type", "application/json");
                     exchange.sendResponseHeaders(200, routerJson.getBytes().length);
                     OutputStream output = exchange.getResponseBody();
@@ -50,7 +53,7 @@ public class RouterNetworkRestAdapter extends RouterNetworkAdapter {
             httpserver.setExecutor(null);
             httpserver.start();
         }
-        return router;
+        return estabelecimento;
     }
 
     private void httpParams(String query, Map<String, String> params) {

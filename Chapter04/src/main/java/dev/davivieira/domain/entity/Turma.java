@@ -1,48 +1,48 @@
 package dev.davivieira.domain.entity;
 
 import dev.davivieira.domain.vo.IP;
-import dev.davivieira.domain.vo.Network;
-import dev.davivieira.domain.vo.SwitchId;
-import dev.davivieira.domain.vo.SwitchType;
+import dev.davivieira.domain.vo.Matricula;
+import dev.davivieira.domain.vo.TurmaId;
+import dev.davivieira.domain.vo.Turno;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Switch {
+public class Turma {
 
-    private SwitchId switchId;
-    private SwitchType switchType;
-    private List<Network> networks;
+    private TurmaId turmaId;
+    private Turno turno;
+    private List<Matricula> matriculas;
     private IP address;
 
-    public Switch (SwitchId switchId, SwitchType switchType, List<Network> networks, IP address){
-        this.switchId = switchId;
-        this.switchType = switchType;
-        this.networks = networks;
+    public Turma (TurmaId turmaId, Turno turno, List<Matricula> matriculas, IP address){
+        this.turmaId = turmaId;
+        this.turno = turno;
+        this.matriculas = matriculas;
         this.address = address;
     }
 
-    public Switch addNetwork(Network network, Router router){
-        List<Network> newNetworks = new ArrayList<>();
+    public Turma addNetwork(Matricula matricula, Estabelecimento estabelecimento){
+        List<Matricula> newNetworks = new ArrayList<>();
 
-        router.retrieveNetworks().forEach(net ->{
+        estabelecimento.retrieveNetworks().forEach(net ->{
             newNetworks.add(net);
         });
 
-        newNetworks.add(network);
-        return new Switch(this.switchId, this.switchType, newNetworks, this.address);
+        newNetworks.add(matricula);
+        return new Turma(this.turmaId, this.turno, newNetworks, this.address);
     }
 
-    public List<Network> getNetworks() {
-        return networks;
+    public List<Matricula> getNetworks() {
+        return matriculas;
     }
 
-    public SwitchId getSwitchId() {
-        return switchId;
+    public TurmaId getSwitchId() {
+        return turmaId;
     }
 
-    public SwitchType getSwitchType() {
-        return switchType;
+    public Turno getSwitchType() {
+        return turno;
     }
 
     public IP getAddress() {
@@ -52,9 +52,9 @@ public class Switch {
     @Override
     public String toString() {
         return "Switch{" +
-                "switchType=" + switchType +
-                ", switchId=" + switchId +
-                ", networks=" + networks +
+                "switchType=" + turno +
+                ", switchId=" + turmaId +
+                ", networks=" + matriculas +
                 ", address=" + address +
                 '}';
     }

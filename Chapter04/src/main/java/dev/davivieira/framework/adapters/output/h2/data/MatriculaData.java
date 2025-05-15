@@ -1,11 +1,20 @@
 package dev.davivieira.framework.adapters.output.h2.data;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.eclipse.persistence.annotations.Convert;
 import org.eclipse.persistence.annotations.Converter;
+
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -17,9 +26,10 @@ import java.util.UUID;
 @Table(name = "networks")
 @MappedSuperclass
 @Converter(name="uuidConverter", converterClass= UUIDTypeConverter.class)
-public class NetworkData implements Serializable {
+public class MatriculaData implements Serializable {
+    private static final long serialVersionUID = 6781948358140086398L;
 
-    @Id
+	@Id
     @Column(name="network_id")
     private int id;
 
@@ -46,7 +56,7 @@ public class NetworkData implements Serializable {
     @Column(name="network_cidr")
     Integer cidr;
 
-    public NetworkData(UUID switchId, IPData ip, String name, Integer cidr) {
+    public MatriculaData(UUID switchId, IPData ip, String name, Integer cidr) {
         this.switchId = switchId;
         this.ip = ip;
         this.name = name;

@@ -1,10 +1,10 @@
 package dev.davivieira.application.ports.output;
 
-import dev.davivieira.domain.entity.Router;
-import dev.davivieira.domain.vo.RouterId;
+import dev.davivieira.domain.entity.Estabelecimento;
+import dev.davivieira.domain.vo.EstabelecimentoId;
 
-public interface RouterNetworkOutputPort {
-    Router fetchRouterById(RouterId routerId);
+public interface EstabelecimentoMatriculaOutputPort {
+    Estabelecimento fetchEstabelecimentoById(EstabelecimentoId estabelecimentoId);
 
-    boolean persistRouter(Router router);
+    boolean persistEstabelecimento(Estabelecimento estabelecimento);
 }

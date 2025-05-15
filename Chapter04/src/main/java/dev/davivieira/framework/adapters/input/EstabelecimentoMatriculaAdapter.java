@@ -1,24 +1,24 @@
 package dev.davivieira.framework.adapters.input;
 
-import dev.davivieira.application.usecases.RouterNetworkUseCase;
-import dev.davivieira.domain.entity.Router;
+import dev.davivieira.application.usecases.EstabelecimentoMatriculaUseCase;
+import dev.davivieira.domain.entity.Estabelecimento;
 import dev.davivieira.domain.vo.IP;
-import dev.davivieira.domain.vo.Network;
-import dev.davivieira.domain.vo.RouterId;
+import dev.davivieira.domain.vo.Matricula;
+import dev.davivieira.domain.vo.EstabelecimentoId;
 import java.util.Map;
 
-public abstract class RouterNetworkAdapter {
+public abstract class EstabelecimentoMatriculaAdapter {
 
-    protected Router router;
-    protected RouterNetworkUseCase routerNetworkUseCase;
+    protected Estabelecimento estabelecimento;
+    protected EstabelecimentoMatriculaUseCase estabelecimentoMatriculaUseCase;
 
-    protected Router addNetworkToRouter(Map<String, String> params){
-        var routerId = RouterId.withId(params.get("routerId"));
-        var network = new Network(IP.fromAddress(params.get("address")),
+    protected Estabelecimento addNetworkToRouter(Map<String, String> params){
+        var routerId = EstabelecimentoId.withId(params.get("routerId"));
+        var network = new Matricula(IP.fromAddress(params.get("address")),
                 params.get("name"),
                 Integer.valueOf(params.get("cidr")));
-        return routerNetworkUseCase.addNetworkToRouter(routerId, network);
+        return estabelecimentoMatriculaUseCase.addMatriculaNoEstabelecimento(routerId, network);
     }
 
-    public abstract Router processRequest(Object requestParams);
+    public abstract Estabelecimento processRequest(Object requestParams);
 }

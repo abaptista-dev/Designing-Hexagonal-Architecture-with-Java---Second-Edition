@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class SwitchJson {
+public class TurmaJson {
 
     @JsonProperty("switchId")
     private UUID switchId;
@@ -22,7 +22,7 @@ public class SwitchJson {
     private IPJson ip;
 
     @JsonProperty("switchType")
-    private SwitchTypeJson switchType;
+    private TurnoJson switchType;
 
     @JsonProperty("networks")
     private List<NetworkJson> networks;

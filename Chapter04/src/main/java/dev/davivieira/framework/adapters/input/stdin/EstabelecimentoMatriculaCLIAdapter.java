@@ -2,33 +2,33 @@ package dev.davivieira.framework.adapters.input.stdin;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.davivieira.application.usecases.RouterNetworkUseCase;
-import dev.davivieira.domain.entity.Router;
-import dev.davivieira.framework.adapters.input.RouterNetworkAdapter;
-import dev.davivieira.framework.adapters.output.file.mappers.RouterJsonFileMapper;
+import dev.davivieira.application.usecases.EstabelecimentoMatriculaUseCase;
+import dev.davivieira.domain.entity.Estabelecimento;
+import dev.davivieira.framework.adapters.input.EstabelecimentoMatriculaAdapter;
+import dev.davivieira.framework.adapters.output.file.mappers.EstabelecimentoJsonFileMapper;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class RouterNetworkCLIAdapter extends RouterNetworkAdapter {
+public class EstabelecimentoMatriculaCLIAdapter extends EstabelecimentoMatriculaAdapter {
 
-    public RouterNetworkCLIAdapter(RouterNetworkUseCase routerNetworkUseCase){
-        this.routerNetworkUseCase = routerNetworkUseCase;
+    public EstabelecimentoMatriculaCLIAdapter(EstabelecimentoMatriculaUseCase estabelecimentoMatriculaUseCase){
+        this.estabelecimentoMatriculaUseCase = estabelecimentoMatriculaUseCase;
     }
 
     @Override
-    public Router processRequest(Object requestParams){
+    public Estabelecimento processRequest(Object requestParams){
         var params = stdinParams(requestParams);
-        router = this.addNetworkToRouter(params);
+        estabelecimento = this.addNetworkToRouter(params);
         ObjectMapper mapper = new ObjectMapper();
         try {
-            var routerJson = mapper.writeValueAsString(RouterJsonFileMapper.toJson(router));
+            var routerJson = mapper.writeValueAsString(EstabelecimentoJsonFileMapper.toJson(estabelecimento));
             System.out.println(routerJson);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return router;
+        return estabelecimento;
     }
 
     private Map<String, String> stdinParams(Object requestParams){

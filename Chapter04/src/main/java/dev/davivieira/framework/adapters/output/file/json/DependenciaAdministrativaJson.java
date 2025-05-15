@@ -5,7 +5,10 @@ import lombok.Getter;
 
 @Getter
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public enum RouterTypeJson {
-    EDGE,
-    CORE;
+public enum DependenciaAdministrativaJson {
+    FEDERAL,
+    ESTADUAL,
+    MUNICIPAL,
+    PARTICULAR
+    ;
 }

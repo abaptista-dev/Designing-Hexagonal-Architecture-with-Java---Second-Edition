@@ -1,63 +1,66 @@
 package dev.davivieira.domain.entity;
 
-import dev.davivieira.domain.vo.*;
-
 import java.util.List;
 
-public class Router {
+import dev.davivieira.domain.vo.IP;
+import dev.davivieira.domain.vo.Matricula;
+import dev.davivieira.domain.vo.EstabelecimentoId;
+import dev.davivieira.domain.vo.DependenciaAdministrativa;
 
-    private RouterType routerType;
-    private RouterId routerId;
-    private Switch networkSwitch;
+public class Estabelecimento {
 
-    public Router(){
+    private DependenciaAdministrativa dependenciaAdministrativa;
+    private EstabelecimentoId estabelecimentoId;
+    private Turma networkSwitch;
+
+    public Estabelecimento(){
 
     }
 
-    public Router(RouterType routerType, RouterId routerId) {
-        this.routerType = routerType;
-        this.routerId = routerId;
+    public Estabelecimento(DependenciaAdministrativa dependenciaAdministrativa, EstabelecimentoId estabelecimentoId) {
+        this.dependenciaAdministrativa = dependenciaAdministrativa;
+        this.estabelecimentoId = estabelecimentoId;
     }
 
-    public Router(RouterType routerType, RouterId routerId, Switch networkSwitch) {
-        this.routerType = routerType;
-        this.routerId = routerId;
+    public Estabelecimento(DependenciaAdministrativa dependenciaAdministrativa, EstabelecimentoId estabelecimentoId, Turma networkSwitch) {
+        this.dependenciaAdministrativa = dependenciaAdministrativa;
+        this.estabelecimentoId = estabelecimentoId;
         this.networkSwitch = networkSwitch;
     }
 
-    public boolean isType(RouterType type){
-        return this.routerType == type;
+    public boolean isType(DependenciaAdministrativa type){
+        return this.dependenciaAdministrativa == type;
     }
 
-    public void addNetworkToSwitch(Network network){
-        this.networkSwitch = networkSwitch.addNetwork(network, this);
+    public void addNetworkToSwitch(Matricula matricula){
+        this.networkSwitch = networkSwitch.addNetwork(matricula, this);
     }
 
-    public Network createNetwork(IP address, String name, int cidr){
-        return new Network(address, name, cidr);
+    public Matricula createNetwork(IP address, String name, int cidr){
+        return new Matricula(address, name, cidr);
     }
 
-    public List<Network> retrieveNetworks(){
+    public List<Matricula> retrieveNetworks(){
         return networkSwitch.getNetworks();
     }
 
-    public RouterType getRouterType() {
-        return routerType;
+    public DependenciaAdministrativa getRouterType() {
+        return dependenciaAdministrativa;
     }
 
-    public RouterId getRouterId() {
-        return routerId;
+    public EstabelecimentoId getRouterId() {
+        return estabelecimentoId;
     }
 
-    public Switch getNetworkSwitch() {
+    public Turma getNetworkSwitch() {
         return networkSwitch;
     }
 
     @Override
     public String toString() {
         return "Router{" +
-                "type=" + routerType +
-                ", id=" + routerId +
+                "type=" + dependenciaAdministrativa +
+                ", id=" + estabelecimentoId +
                 ", networkSwitch=" + networkSwitch +
                 '}';
     }

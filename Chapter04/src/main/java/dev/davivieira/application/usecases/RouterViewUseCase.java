@@ -1,23 +1,23 @@
 package dev.davivieira.application.usecases;
 
-import dev.davivieira.domain.entity.Router;
-import dev.davivieira.domain.vo.RouterType;
+import dev.davivieira.domain.entity.Estabelecimento;
+import dev.davivieira.domain.vo.DependenciaAdministrativa;
 
 import java.util.List;
 
 public interface RouterViewUseCase {
 
-    List<Router> getRelatedRouters(RelatedRoutersCommand relatedRoutersCommand);
+    List<Estabelecimento> getRelatedRouters(RelatedRoutersCommand relatedRoutersCommand);
 
     class RelatedRoutersCommand {
 
-        private RouterType type;
+        private DependenciaAdministrativa type;
 
         public RelatedRoutersCommand(String type){
-            this.type = RouterType.valueOf(type);
+            this.type = DependenciaAdministrativa.valueOf(type);
         }
 
-        public RouterType getType() {
+        public DependenciaAdministrativa getType() {
             return type;
         }
     }
