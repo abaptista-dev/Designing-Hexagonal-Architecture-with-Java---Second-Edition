@@ -42,23 +42,26 @@ public class RouterH2Mapper {
         }
 
         private static List<Network> getNetworksFromData(List<NetworkData> networkData){
-            return networkData
-                    .stream()
-                    .map(network -> new Network(
-                            IP.fromAddress(network.getIp().getAddress()),
-                            network.getName(),
-                            network.getCidr()))
-                    .collect(Collectors.toList());
+            return networkData//
+                    .stream()//
+                    .map(network -> new Network(//
+                            IP.fromAddress(network.getIp().getAddress())//
+                            ,network.getName()//
+                            ,network.getCidr())//
+                      )//
+                    .collect(Collectors.toList())//
+           ;
         }
 
         private static List<NetworkData> getNetworksFromDomain(List<Network> networks, UUID switchId){
-            return  networks
-                     .stream()
-                     .map(network -> new NetworkData(
-                            switchId,
-                            IPData.fromAddress(network.getAddress().getIPAddress()),
-                            network.getName(),
-                            network.getCidr()))
+            return  networks//
+                     .stream()//
+                     .map(network -> new NetworkData(//
+                            switchId//
+                            ,IPData.fromAddress(network.getAddress().getIPAddress())//
+                            ,network.getName()//
+                            ,network.getCidr())//
+                     )//
                      .collect(Collectors.toList());
         }
 }

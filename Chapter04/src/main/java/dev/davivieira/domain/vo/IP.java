@@ -26,9 +26,10 @@ public class IP {
 
     @Override
     public String toString() {
-        return "IP{" +
-                "address='" + address + '\'' +
-                ", protocol=" + protocol +
-                '}';
+        return "IP{"//
+               + "address='" + address + '\''//
+               + ", protocol=" + protocol//
+               + '}'//
+               ;
     }
 }

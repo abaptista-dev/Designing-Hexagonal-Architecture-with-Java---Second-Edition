@@ -55,10 +55,11 @@ public class Router {
 
     @Override
     public String toString() {
-        return "Router{" +
-                "type=" + routerType +
-                ", id=" + routerId +
-                ", networkSwitch=" + networkSwitch +
-                '}';
+        return "Router{"//
+                +"type=" + routerType//
+                +", id=" + routerId//
+                +", networkSwitch=" + networkSwitch//
+               + '}'//
+            ;
     }
 }

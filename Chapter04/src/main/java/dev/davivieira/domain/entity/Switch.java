@@ -51,11 +51,12 @@ public class Switch {
 
     @Override
     public String toString() {
-        return "Switch{" +
-                "switchType=" + switchType +
-                ", switchId=" + switchId +
-                ", networks=" + networks +
-                ", address=" + address +
-                '}';
+        return "Switch{"//
+                +"switchType=" + switchType//
+                +", switchId=" + switchId//
+                +", networks=" + networks//
+                +", address=" + address//
+                +'}'//
+           ;
     }
 }

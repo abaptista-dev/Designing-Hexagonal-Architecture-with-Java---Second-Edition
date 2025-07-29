@@ -20,8 +20,9 @@ public class SwitchId {
 
     @Override
     public String toString() {
-        return "SwitchId{" +
-                "id='" + id + '\'' +
-                '}';
+        return "SwitchId{"//
+               + "id='" + id + '\''//
+               + '}'//
+        ;
     }
 }

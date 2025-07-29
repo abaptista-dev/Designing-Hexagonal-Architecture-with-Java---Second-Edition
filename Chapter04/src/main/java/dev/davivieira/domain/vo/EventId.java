@@ -14,8 +14,9 @@ public class EventId {
 
     @Override
     public String toString() {
-        return "EventId{" +
-                "id='" + id + '\'' +
-                '}';
+        return "EventId{"//
+               +"id='" + id + '\''//
+               +'}'//
+        ;
     }
 }

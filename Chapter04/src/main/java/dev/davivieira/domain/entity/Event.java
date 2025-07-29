@@ -39,10 +39,10 @@ public class Event implements Comparable<Event> {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Event event) {
-            return (event.timestamp.equals(this.timestamp)
-                    && event.id.equals(this.id)
-                    && event.protocol.equals(this.protocol)
-                    && event.activity.equals(this.activity)
+            return (event.timestamp.equals(this.timestamp)//
+                && event.id.equals(this.id)//
+                && event.protocol.equals(this.protocol)//
+                && event.activity.equals(this.activity)//
             );
         } else {
             return false;

@@ -10,11 +10,12 @@ public record Network(IP address, String name, int cidr) {
 
     @Override
     public String toString() {
-        return "Network{" +
-                "address=" + address +
-                ", name='" + name + '\'' +
-                ", cidr=" + cidr +
-                '}';
+        return "Network{"//
+               + "address=" + address//
+               + ", name='" + name + '\''//
+               + ", cidr=" + cidr//
+               + '}'//
+           ;
     }
 
     public IP getAddress() {

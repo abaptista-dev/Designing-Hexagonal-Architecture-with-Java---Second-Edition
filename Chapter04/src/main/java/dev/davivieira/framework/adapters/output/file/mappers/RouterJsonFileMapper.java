@@ -37,22 +37,29 @@ public class RouterJsonFileMapper {
     }
 
     private static List<Network> getNetworksFromJson(List<NetworkJson> networkJson){
-        return networkJson
-                .stream()
-                .map(json ->  new Network(
-                        IP.fromAddress(json.getIp().getAddress()),
-                        json.getNetworkName(),
-                        Integer.valueOf(json.getCidr())))
+        return networkJson//
+                .stream()//
+                .map(//
+                    json ->  new Network(//
+                        IP.fromAddress(json.getIp().getAddress())//
+                        ,json.getNetworkName()//
+                        ,Integer.valueOf(json.getCidr())//
+                        )//
+                 )//
                 .collect(Collectors.toList());
     }
 
     private static List<NetworkJson>  getNetworksFromDomain(List<Network> networks){
-        return networks
-                .stream()
-                .map(network -> new NetworkJson(
-                        IPJson.fromAddress(network.getAddress().getIPAddress()),
-                        network.getName(),
-                        String.valueOf(network.getCidr())))
+        return networks//
+                .stream()//
+                .map(//
+                     network -> new NetworkJson(//
+                        IPJson.fromAddress(network.getAddress().getIPAddress())//
+                        ,network.getName()//
+                        ,String.valueOf(network.getCidr()//
+                      )//
+                      )//
+                )//
                 .collect(Collectors.toList());
     }
 

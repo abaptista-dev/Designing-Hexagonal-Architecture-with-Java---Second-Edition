@@ -30,7 +30,9 @@ public class RouterNetworkRestAdapter extends RouterNetworkAdapter {
         Map<String, String> params = new HashMap<>();
         if(requestParams instanceof HttpServer) {
             var httpserver = (HttpServer) requestParams;
-            httpserver.createContext("/network/add", (exchange -> {
+            httpserver.createContext(//
+                "/network/add"//
+                , (exchange -> {
                 if ("GET".equals(exchange.getRequestMethod())) {
                     var query = exchange.getRequestURI().getRawQuery();
                     httpParams(query, params);
@@ -46,7 +48,8 @@ public class RouterNetworkRestAdapter extends RouterNetworkAdapter {
                     exchange.sendResponseHeaders(405, -1);
                 }
                 exchange.close();
-            }));
+            })//
+            );
             httpserver.setExecutor(null);
             httpserver.start();
         }
@@ -55,16 +58,35 @@ public class RouterNetworkRestAdapter extends RouterNetworkAdapter {
 
     private void httpParams(String query, Map<String, String> params) {
         var noNameText = "Anonymous";
-        var requestParams = Pattern.compile("&").splitAsStream(query)
+        var requestParams = Pattern//
+                .compile("&")//
+                .splitAsStream(query)//
                 .map(s -> Arrays.copyOf(s.split("="), 2))
-                .collect(groupingBy(s -> decode(s[0]), mapping(s -> decode(s[1]), toList())));
-        var routerId = requestParams.getOrDefault("routerId", List.of(noNameText)).stream().findFirst().orElse(noNameText);
+                .collect(groupingBy(s -> decode(s[0]), mapping(s -> decode(s[1]), toList())))//
+                ;
+        var routerId = requestParams.getOrDefault("routerId", List.of(noNameText))//
+                       .stream()//
+                       .findFirst()//
+                      .orElse(noNameText)//
+                  ;
         params.put("routerId",routerId);
-        var address = requestParams.getOrDefault("address", List.of(noNameText)).stream().findFirst().orElse(noNameText);
+        var address = requestParams.getOrDefault("address", List.of(noNameText))//
+                  .stream()//
+                  .findFirst()//
+                  .orElse(noNameText)//
+                  ;
         params.put("address",address);
-        var name = requestParams.getOrDefault("name", List.of(noNameText)).stream().findFirst().orElse(noNameText);
+        var name = requestParams.getOrDefault("name", List.of(noNameText))//
+                 .stream()//
+                 .findFirst()//
+                 .orElse(noNameText)//
+                 ;
         params.put("name",name);
-        var cidr = requestParams.getOrDefault("cidr", List.of(noNameText)).stream().findFirst().orElse(noNameText);
+        var cidr = requestParams.getOrDefault("cidr", List.of(noNameText))//
+                .stream()//
+                .findFirst()//
+                .orElse(noNameText)//
+                ;
         params.put("cidr",cidr);
     }
 

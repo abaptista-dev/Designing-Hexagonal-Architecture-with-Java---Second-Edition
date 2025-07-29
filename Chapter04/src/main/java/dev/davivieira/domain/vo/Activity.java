@@ -12,9 +12,10 @@ public class Activity {
 
     @Override
     public String toString() {
-        return "Activity{" +
-                "srcHost='" + srcHost + '\'' +
-                ", dstHost='" + dstHost + '\'' +
-                '}';
+        return "Activity{"//
+                +"srcHost='" + srcHost + '\''//
+                +", dstHost='" + dstHost + '\''
+                +'}'//
+        ;
     }
 }

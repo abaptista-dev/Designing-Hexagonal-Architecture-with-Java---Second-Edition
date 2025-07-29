@@ -24,7 +24,9 @@ public class RouterViewFileAdapter implements RouterViewOutputPort {
     private static List<Router> readFileAsString() {
         List<Router> routers = new ArrayList<>();
 
-        try (Stream<String> stream = Files.lines(Paths.get(RouterViewFileAdapter.class.getResource("/routers.txt").getPath()))) {
+        try (Stream<String> stream = Files//
+              .lines(Paths.get(RouterViewFileAdapter.class.getResource("/routers.txt").getPath()))//
+        ) {
             stream.forEach(line ->{
                 String[] routerEntry = line.split(";");
                 var id = routerEntry[0];

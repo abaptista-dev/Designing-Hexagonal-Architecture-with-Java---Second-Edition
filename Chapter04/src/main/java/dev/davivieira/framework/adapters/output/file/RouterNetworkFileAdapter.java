@@ -49,10 +49,11 @@ public class RouterNetworkFileAdapter implements RouterNetworkOutputPort {
 
     private void readJsonFile(){
         try {
-            this.routers = objectMapper.
-                    readValue(
-                            resource,
-                            new TypeReference<List<RouterJson>>(){});
+            this.routers = objectMapper//
+                    .readValue(//
+                            resource//
+                           , new TypeReference<List<RouterJson>>(){}//
+                    );
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,9 +61,9 @@ public class RouterNetworkFileAdapter implements RouterNetworkOutputPort {
 
     private RouterNetworkFileAdapter() {
         this.objectMapper = new ObjectMapper();
-        this.resource = getClass().
-                getClassLoader().
-                getResourceAsStream("inventory.json");
+        this.resource = getClass()//
+                .getClassLoader()//
+                .getResourceAsStream("inventory.json");
         readJsonFile();
     }
 

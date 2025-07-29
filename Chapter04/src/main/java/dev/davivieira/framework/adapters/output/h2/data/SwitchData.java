@@ -22,9 +22,11 @@ import java.util.UUID;
 public class SwitchData implements Serializable {
 
     @Id
-    @Column(name="switch_id",
-            columnDefinition = "uuid",
-            updatable = false )
+    @Column(//
+        name="switch_id"//
+        ,columnDefinition = "uuid"//
+        ,updatable = false//
+    )
     @Convert("uuidConverter")
     private UUID switchId;
 
@@ -38,21 +40,23 @@ public class SwitchData implements Serializable {
     private SwitchTypeData switchType;
 
     @OneToMany
-    @JoinColumn(table = "networks",
-            name = "switch_id",
-            referencedColumnName = "switch_id")
+    @JoinColumn(//
+       table = "networks"//
+       ,name = "switch_id"//
+       ,referencedColumnName = "switch_id"//
+    )
     private List<NetworkData> networks;
 
     @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(
-                    name = "address",
-                    column = @Column(
-                            name = "switch_ip_address")),
-            @AttributeOverride(
-                    name = "protocol",
-                    column = @Column(
-                            name = "switch_ip_protocol")),
+    @AttributeOverrides({//
+            @AttributeOverride(//
+                    name = "address"//
+                    ,column = @Column(
+                            name = "switch_ip_address"))//
+            ,@AttributeOverride(//
+                    name = "protocol"//
+                    ,column = @Column(
+                            name = "switch_ip_protocol"))//
     })
     private IPData ip;
 }

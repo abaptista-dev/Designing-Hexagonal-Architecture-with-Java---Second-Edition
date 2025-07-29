@@ -4,6 +4,6 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public enum SwitchTypeData {
-    LAYER2,
+    LAYER2,//
     LAYER3;
 }
