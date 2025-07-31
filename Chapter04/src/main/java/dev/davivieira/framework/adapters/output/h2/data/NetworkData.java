@@ -19,7 +19,9 @@ import java.util.UUID;
 @Converter(name="uuidConverter", converterClass= UUIDTypeConverter.class)
 public class NetworkData implements Serializable {
 
-    @Id
+    private static final long serialVersionUID = 6781948358140086398L;
+
+	@Id
     @Column(name="network_id")
     private int id;
 

@@ -11,7 +11,10 @@ import org.eclipse.persistence.sessions.Session;
 
 public class UUIDTypeConverter implements Converter
 {
-    @Override
+    private static final long serialVersionUID = 7229705489946560905L;
+
+
+	@Override
     public UUID convertObjectValueToDataValue(Object objectValue, Session session)
     {
         return (UUID) objectValue;

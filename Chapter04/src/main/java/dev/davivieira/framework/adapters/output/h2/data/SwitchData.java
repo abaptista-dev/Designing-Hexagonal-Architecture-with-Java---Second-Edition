@@ -21,7 +21,9 @@ import java.util.UUID;
 @Converter(name="uuidConverter", converterClass= UUIDTypeConverter.class)
 public class SwitchData implements Serializable {
 
-    @Id
+    private static final long serialVersionUID = 8950512207053504221L;
+
+	@Id
     @Column(//
         name="switch_id"//
         ,columnDefinition = "uuid"//

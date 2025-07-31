@@ -19,7 +19,9 @@ import java.util.UUID;
 @Converter(name="uuidConverter", converterClass= UUIDTypeConverter.class)
 public class RouterData implements Serializable {
 
-    @Id
+    private static final long serialVersionUID = 3780033552973298191L;
+
+	@Id
     @Column(name="router_id"//
             ,columnDefinition = "uuid"//
             ,updatable = false//
