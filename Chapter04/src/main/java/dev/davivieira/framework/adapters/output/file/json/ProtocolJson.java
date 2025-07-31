@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public enum ProtocolJson {
-    IPV4,//
-    IPV6;
+	IPV4, //
+	IPV6;
 }

@@ -4,6 +4,6 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public enum ProtocolData {
-    IPV4,//
-    IPV6
+	IPV4, //
+	IPV6
 }

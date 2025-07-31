@@ -10,28 +10,28 @@ import lombok.Getter;
 @Getter
 public class IPData {
 
-    private String address;
+	private String address;
 
-    @Enumerated(EnumType.STRING)
-    @Embedded
-    private ProtocolData protocol;
+	@Enumerated(EnumType.STRING)
+	@Embedded
+	private ProtocolData protocol;
 
-    private IPData(String address){
-        if(address == null)
-            throw new IllegalArgumentException("Null IP address");
-        this.address = address;
-        if(address.length()<=15) {
-            this.protocol = ProtocolData.IPV4;
-        } else {
-            this.protocol = ProtocolData.IPV6;
-        }
-    }
+	private IPData(String address) {
+		if (address == null)
+			throw new IllegalArgumentException("Null IP address");
+		this.address = address;
+		if (address.length() <= 15) {
+			this.protocol = ProtocolData.IPV4;
+		} else {
+			this.protocol = ProtocolData.IPV6;
+		}
+	}
 
-    public IPData() {
+	public IPData() {
 
-    }
+	}
 
-    public static IPData fromAddress(String address){
-        return new IPData(address);
-    }
+	public static IPData fromAddress(String address) {
+		return new IPData(address);
+	}
 }

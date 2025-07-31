@@ -18,47 +18,45 @@ import java.util.UUID;
 @Table(name = "switches")
 @SecondaryTable(name = "networks")
 @MappedSuperclass
-@Converter(name="uuidConverter", converterClass= UUIDTypeConverter.class)
+@Converter(name = "uuidConverter", converterClass = UUIDTypeConverter.class)
 public class SwitchData implements Serializable {
 
-    private static final long serialVersionUID = 8950512207053504221L;
+	private static final long serialVersionUID = 8950512207053504221L;
 
 	@Id
-    @Column(//
-        name="switch_id"//
-        ,columnDefinition = "uuid"//
-        ,updatable = false//
-    )
-    @Convert("uuidConverter")
-    private UUID switchId;
+	@Column(//
+			name = "switch_id"//
+			, columnDefinition = "uuid"//
+			, updatable = false//
+	)
+	@Convert("uuidConverter")
+	private UUID switchId;
 
-    @Column(name="router_id")
-    @Convert("uuidConverter")
-    private UUID routerId;
+	@Column(name = "router_id")
+	@Convert("uuidConverter")
+	private UUID routerId;
 
-    @Enumerated(EnumType.STRING)
-    @Embedded
-    @Column(name = "switch_type")
-    private SwitchTypeData switchType;
+	@Enumerated(EnumType.STRING)
+	@Embedded
+	@Column(name = "switch_type")
+	private SwitchTypeData switchType;
 
-    @OneToMany
-    @JoinColumn(//
-       table = "networks"//
-       ,name = "switch_id"//
-       ,referencedColumnName = "switch_id"//
-    )
-    private List<NetworkData> networks;
+	@OneToMany
+	@JoinColumn(//
+			table = "networks"//
+			, name = "switch_id"//
+			, referencedColumnName = "switch_id"//
+	)
+	private List<NetworkData> networks;
 
-    @Embedded
-    @AttributeOverrides({//
-            @AttributeOverride(//
-                    name = "address"//
-                    ,column = @Column(
-                            name = "switch_ip_address"))//
-            ,@AttributeOverride(//
-                    name = "protocol"//
-                    ,column = @Column(
-                            name = "switch_ip_protocol"))//
-    })
-    private IPData ip;
+	@Embedded
+	@AttributeOverrides({ //
+			@AttributeOverride(//
+					name = "address"//
+					, column = @Column(name = "switch_ip_address"))//
+			, @AttributeOverride(//
+					name = "protocol"//
+					, column = @Column(name = "switch_ip_protocol"))//
+	})
+	private IPData ip;
 }

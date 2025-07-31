@@ -7,18 +7,18 @@ import java.util.List;
 
 public interface RouterViewUseCase {
 
-    List<Router> getRelatedRouters(RelatedRoutersCommand relatedRoutersCommand);
+	List<Router> getRelatedRouters(RelatedRoutersCommand relatedRoutersCommand);
 
-    class RelatedRoutersCommand {
+	class RelatedRoutersCommand {
 
-        private RouterType type;
+		private RouterType type;
 
-        public RelatedRoutersCommand(String type){
-            this.type = RouterType.valueOf(type);
-        }
+		public RelatedRoutersCommand(String type) {
+			this.type = RouterType.valueOf(type);
+		}
 
-        public RouterType getType() {
-            return type;
-        }
-    }
+		public RouterType getType() {
+			return type;
+		}
+	}
 }

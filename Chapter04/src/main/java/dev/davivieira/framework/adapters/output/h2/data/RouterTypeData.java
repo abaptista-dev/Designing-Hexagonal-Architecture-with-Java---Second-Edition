@@ -4,6 +4,6 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public enum RouterTypeData {
-    EDGE,//
-    CORE;
+	EDGE, //
+	CORE;
 }

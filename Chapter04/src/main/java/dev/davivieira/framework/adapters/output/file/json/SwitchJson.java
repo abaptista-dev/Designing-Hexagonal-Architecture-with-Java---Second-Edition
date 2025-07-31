@@ -15,16 +15,16 @@ import java.util.UUID;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class SwitchJson {
 
-    @JsonProperty("switchId")
-    private UUID switchId;
+	@JsonProperty("switchId")
+	private UUID switchId;
 
-    @JsonProperty("ip")
-    private IPJson ip;
+	@JsonProperty("ip")
+	private IPJson ip;
 
-    @JsonProperty("switchType")
-    private SwitchTypeJson switchType;
+	@JsonProperty("switchType")
+	private SwitchTypeJson switchType;
 
-    @JsonProperty("networks")
-    private List<NetworkJson> networks;
+	@JsonProperty("networks")
+	private List<NetworkJson> networks;
 
 }

@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class NetworkJson {
 
-    @JsonProperty("ip")
-    IPJson ip;
-    @JsonProperty("networkName")
-    String networkName;
-    @JsonProperty("networkCidr")
-    String cidr;
+	@JsonProperty("ip")
+	IPJson ip;
+	@JsonProperty("networkName")
+	String networkName;
+	@JsonProperty("networkCidr")
+	String cidr;
 }

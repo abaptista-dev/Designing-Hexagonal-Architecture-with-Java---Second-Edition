@@ -12,24 +12,24 @@ import lombok.NoArgsConstructor;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class IPJson {
 
-    @JsonProperty("address")
-    private String address;
+	@JsonProperty("address")
+	private String address;
 
-    @JsonProperty("protocol")
-    private ProtocolJson protocol;
+	@JsonProperty("protocol")
+	private ProtocolJson protocol;
 
-    private IPJson(String address){
-        if(address == null)
-            throw new IllegalArgumentException("Null IP address");
-        this.address = address;
-        if(address.length()<=15) {
-            this.protocol = ProtocolJson.IPV4;
-        } else {
-            this.protocol = ProtocolJson.IPV6;
-        }
-    }
+	private IPJson(String address) {
+		if (address == null)
+			throw new IllegalArgumentException("Null IP address");
+		this.address = address;
+		if (address.length() <= 15) {
+			this.protocol = ProtocolJson.IPV4;
+		} else {
+			this.protocol = ProtocolJson.IPV6;
+		}
+	}
 
-    public static IPJson fromAddress(String ipAddress) {
-        return new IPJson(ipAddress);
-    }
+	public static IPJson fromAddress(String ipAddress) {
+		return new IPJson(ipAddress);
+	}
 }

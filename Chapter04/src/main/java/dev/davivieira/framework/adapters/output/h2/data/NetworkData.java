@@ -16,42 +16,39 @@ import java.util.UUID;
 @Entity
 @Table(name = "networks")
 @MappedSuperclass
-@Converter(name="uuidConverter", converterClass= UUIDTypeConverter.class)
+@Converter(name = "uuidConverter", converterClass = UUIDTypeConverter.class)
 public class NetworkData implements Serializable {
 
-    private static final long serialVersionUID = 6781948358140086398L;
+	private static final long serialVersionUID = 6781948358140086398L;
 
 	@Id
-    @Column(name="network_id")
-    private int id;
+	@Column(name = "network_id")
+	private int id;
 
-    @Column(name="switch_id")
-    @Convert("uuidConverter")
-    private UUID switchId;
+	@Column(name = "switch_id")
+	@Convert("uuidConverter")
+	private UUID switchId;
 
-    @Embedded
-    @AttributeOverrides({//
-            @AttributeOverride(//
-                    name = "address"//
-                    ,column = @Column(
-                            name = "network_address"))//
-            ,@AttributeOverride(
-                    name = "protocol"//
-                   , column = @Column(
-                            name = "network_protocol"))//
-    })
-    IPData ip;
+	@Embedded
+	@AttributeOverrides({ //
+			@AttributeOverride(//
+					name = "address"//
+					, column = @Column(name = "network_address"))//
+			, @AttributeOverride(name = "protocol"//
+					, column = @Column(name = "network_protocol"))//
+	})
+	IPData ip;
 
-    @Column(name="network_name")
-    String name;
+	@Column(name = "network_name")
+	String name;
 
-    @Column(name="network_cidr")
-    Integer cidr;
+	@Column(name = "network_cidr")
+	Integer cidr;
 
-    public NetworkData(UUID switchId, IPData ip, String name, Integer cidr) {
-        this.switchId = switchId;
-        this.ip = ip;
-        this.name = name;
-        this.cidr = cidr;
-    }
+	public NetworkData(UUID switchId, IPData ip, String name, Integer cidr) {
+		this.switchId = switchId;
+		this.ip = ip;
+		this.name = name;
+		this.cidr = cidr;
+	}
 }

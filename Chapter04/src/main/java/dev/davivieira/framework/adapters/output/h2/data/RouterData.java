@@ -16,29 +16,28 @@ import java.util.UUID;
 @Table(name = "routers")
 @SecondaryTable(name = "switches")
 @MappedSuperclass
-@Converter(name="uuidConverter", converterClass= UUIDTypeConverter.class)
+@Converter(name = "uuidConverter", converterClass = UUIDTypeConverter.class)
 public class RouterData implements Serializable {
 
-    private static final long serialVersionUID = 3780033552973298191L;
+	private static final long serialVersionUID = 3780033552973298191L;
 
 	@Id
-    @Column(name="router_id"//
-            ,columnDefinition = "uuid"//
-            ,updatable = false//
-    )
-    @Convert("uuidConverter")
-    private UUID routerId;
+	@Column(name = "router_id"//
+			, columnDefinition = "uuid"//
+			, updatable = false//
+	)
+	@Convert("uuidConverter")
+	private UUID routerId;
 
-    @Embedded
-    @Enumerated(EnumType.STRING)
-    @Column(name="router_type")
-    private RouterTypeData routerType;
+	@Embedded
+	@Enumerated(EnumType.STRING)
+	@Column(name = "router_type")
+	private RouterTypeData routerType;
 
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(table = "switches"//
-            ,name = "router_id"//
-            ,referencedColumnName = "router_id"//
-   )
-    private SwitchData networkSwitch;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(table = "switches"//
+			, name = "router_id"//
+			, referencedColumnName = "router_id"//
+	)
+	private SwitchData networkSwitch;
 }
