@@ -2,7 +2,6 @@ package dev.davivieira.domain.specification;
 
 import dev.davivieira.domain.entity.Router;
 import dev.davivieira.domain.vo.IP;
-import dev.davivieira.domain.vo.Network;
 
 public final class NetworkAvailabilitySpecification extends AbstractSpecification<Router> {
 
