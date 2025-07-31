@@ -15,6 +15,9 @@
 	<project.reporting.outputEncoding>UTF8</project.reporting.outputEncoding>
         <junit.version>4.13.2</junit.version>
         <cucumber.version>7.2.3</cucumber.version>
+		<config.dir>${project.basedir}/src/config</config.dir>
+		<xml-format-maven-plugin.version>4.1.0</xml-format-maven-plugin.version>
+		<formatter-maven-plugin.version>2.26.0</formatter-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -122,6 +125,38 @@
                     </execution>
                 </executions>
             </plugin>
+			<plugin>
+				<groupId>au.com.acegi</groupId>
+				<artifactId>xml-format-maven-plugin</artifactId>
+				<version>${xml-format-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>xml-format</id>
+						<goals>
+							<goal>xml-format</goal>
+						</goals>
+						<configuration>
+							<tabIndent>true</tabIndent>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>net.revelc.code.formatter</groupId>
+				<artifactId>formatter-maven-plugin</artifactId>
+				<version>${formatter-maven-plugin.version}</version>
+				<configuration>
+					<configFile>${config.dir}/eclipse-formatter-config.xml</configFile>
+					<encoding>UTF-8</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>format</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
         </plugins>
     </build>
 
