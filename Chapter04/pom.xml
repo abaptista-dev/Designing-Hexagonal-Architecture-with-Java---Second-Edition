@@ -154,5 +154,6 @@
 	</build>
 	<modules>
 		<module>chapter04-router-ports</module>
+		<module>chapter04-router-usecases</module>
 	</modules>
 </project>
