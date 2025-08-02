@@ -157,5 +157,6 @@
 		<module>chapter04-router-usecases</module>
 		<module>chapter04-router-ports</module>
 		<module>chapter04-router-framework</module>
+		<module>chapter04-router-apps</module>
 	</modules>
 </project>
