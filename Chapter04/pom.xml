@@ -153,7 +153,9 @@
 		</plugins>
 	</build>
 	<modules>
-		<module>chapter04-router-ports</module>
+		<module>chapter04-router-domain</module>
 		<module>chapter04-router-usecases</module>
+		<module>chapter04-router-ports</module>
+		<module>chapter04-router-framework</module>
 	</modules>
 </project>
