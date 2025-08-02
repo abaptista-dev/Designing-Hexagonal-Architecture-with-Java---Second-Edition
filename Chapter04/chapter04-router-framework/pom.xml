@@ -15,7 +15,13 @@
 		<config.dir>${project.parent.basedir}/src/config</config.dir>
 	</properties>
 	<dependencyManagement/>
-	<dependencies/>
+	<dependencies>
+		<dependency>
+			<groupId>dev.davivieira</groupId>
+			<artifactId>chapter04-router-ports</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<pluginManagement>
 			<plugins/>
