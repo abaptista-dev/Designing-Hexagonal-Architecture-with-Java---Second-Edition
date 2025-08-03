@@ -9,10 +9,17 @@ import dev.davivieira.framework.adapters.output.file.mappers.RouterJsonFileMappe
 
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.groupingBy;
+
 import java.net.URLDecoder;
 
 public class RouterNetworkRestAdapter extends RouterNetworkAdapter {

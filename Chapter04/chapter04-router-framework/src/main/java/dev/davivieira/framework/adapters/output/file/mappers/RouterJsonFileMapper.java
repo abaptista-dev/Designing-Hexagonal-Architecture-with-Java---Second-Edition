@@ -2,8 +2,21 @@ package dev.davivieira.framework.adapters.output.file.mappers;
 
 import dev.davivieira.domain.entity.Router;
 import dev.davivieira.domain.entity.Switch;
-import dev.davivieira.domain.vo.*;
-import dev.davivieira.framework.adapters.output.file.json.*;
+
+import dev.davivieira.domain.vo.IP;
+import dev.davivieira.domain.vo.Network;
+import dev.davivieira.domain.vo.RouterId;
+import dev.davivieira.domain.vo.RouterType;
+import dev.davivieira.domain.vo.SwitchId;
+import dev.davivieira.domain.vo.SwitchType;
+
+import dev.davivieira.framework.adapters.output.file.json.IPJson;
+import dev.davivieira.framework.adapters.output.file.json.NetworkJson;
+import dev.davivieira.framework.adapters.output.file.json.RouterJson;
+import dev.davivieira.framework.adapters.output.file.json.RouterTypeJson;
+
+import dev.davivieira.framework.adapters.output.file.json.SwitchJson;
+import dev.davivieira.framework.adapters.output.file.json.SwitchTypeJson;
 
 import java.util.List;
 import java.util.stream.Collectors;

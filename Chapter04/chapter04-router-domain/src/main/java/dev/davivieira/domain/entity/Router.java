@@ -1,8 +1,11 @@
 package dev.davivieira.domain.entity;
 
-import dev.davivieira.domain.vo.*;
-
 import java.util.List;
+
+import dev.davivieira.domain.vo.IP;
+import dev.davivieira.domain.vo.Network;
+import dev.davivieira.domain.vo.RouterId;
+import dev.davivieira.domain.vo.RouterType;
 
 public class Router {
 

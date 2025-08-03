@@ -2,8 +2,18 @@ package dev.davivieira.framework.adapters.output.h2.mappers;
 
 import dev.davivieira.domain.entity.Router;
 import dev.davivieira.domain.entity.Switch;
-import dev.davivieira.domain.vo.*;
-import dev.davivieira.framework.adapters.output.h2.data.*;
+import dev.davivieira.domain.vo.IP;
+import dev.davivieira.domain.vo.Network;
+import dev.davivieira.domain.vo.RouterId;
+import dev.davivieira.domain.vo.RouterType;
+import dev.davivieira.domain.vo.SwitchId;
+import dev.davivieira.domain.vo.SwitchType;
+import dev.davivieira.framework.adapters.output.h2.data.IPData;
+import dev.davivieira.framework.adapters.output.h2.data.NetworkData;
+import dev.davivieira.framework.adapters.output.h2.data.RouterData;
+import dev.davivieira.framework.adapters.output.h2.data.RouterTypeData;
+import dev.davivieira.framework.adapters.output.h2.data.SwitchData;
+import dev.davivieira.framework.adapters.output.h2.data.SwitchTypeData;
 
 import java.util.List;
 import java.util.UUID;
